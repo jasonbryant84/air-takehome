@@ -2,8 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import { BoardType } from '../../redux/boardsSlice'
-import { AssetType } from '../../redux/assetsSlice'
+import GalleryLazyImage from './GalleryLazyImage'
 
 interface ThumbnailType {
     id: string,
@@ -45,54 +44,79 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
     }
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-             <Droppable droppableId="droppable" direction="horizontal">
-                 {(provided, snapshot) => (
-                <div
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    className='flex flex-row flex-wrap justify-between mt-[20px] mb-[20px]'
-                >
-                    {thumbnails.map((item, index) => (
-                        <Draggable key={item.id} draggableId={item.id} index={index}>
-                            {(provided, snapshot) => {
-                                return (
-                                    <div
-                                        className={`flex overflow-hidden mb-[20px] rounded-md`}
-                                    >
-                                        {/* <div className='absolute top-0 left-0 bg-[#000000]/[0.1] w-full h-full'></div> */}
-                                        <div
-                                            className='relative min-w-[200px] max-h-[200px] rounded-md'
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            style={{
-                                                // userSelect: 'none',
-                                                margin: '0 8px 0 0',
-                                                backgroundColor: snapshot.isDragging ? 'blue' : 'transparent',
-                                                color: 'white',
-                                                ...provided.draggableProps.style,
-                                            }}
-                                        >
-                                            <Image
-                                                className="relative min-w-[200px] rounded-md"
-                                                src={item.url || '/images/no-image.jpg'}
-                                                alt={item?.id}
-                                                width={180}
-                                                height={37}
-                                                loading='lazy'
-                                            />
-                                            <div className='absolute bottom-[20px] text-[14px] w-[80%] left-[10%]'>{item.id}</div>
-                                        </div>
-                                    </div>
-                                )
-                            }}
-                        </Draggable>
-                    ))}
-                    {provided.placeholder}
-                </div>
-                )}
-            </Droppable>
-        </DragDropContext>
+        <div className='flex flex-row flex-wrap justify-between mt-[20px]'>
+            {thumbnails.map((item, key) => {
+                const url = item.url || '/images/no-image.jpg'
+                return (
+                    <GalleryLazyImage
+                        imageUrl={url}
+                    />
+                    // <div
+                    //     key={key}
+                    //     style={{backgroundImage: `url(${url})`}}
+                    //     className='relative h-[60vw] w-[100vw] xs:h-[40vw] xs:w-[45vw] sm:h-[40vw] sm:w-[38vw] md:h-[25vw] md:w-[26vw] lg:h-[15vw] lg:w-[20vw] bg-cover bg-center mb-[20px] rounded-md overflow-hidden bg-button-bkg'
+                    // >
+                    //     {/* <Image
+                    //         key={key}
+                    //         className="w-full rounded-md"
+                    //         src={item.url || '/images/no-image.jpg'}
+                    //         alt={item?.id}
+                    //         width={180}
+                    //         height={37}
+                    //         loading='lazy'
+                    //     /> */}
+                    // </div>
+                )
+            })}
+        </div>
+        // <DragDropContext onDragEnd={onDragEnd}>
+        //      <Droppable droppableId="droppable" direction="horizontal">
+        //          {(provided, snapshot) => (
+        //         <div
+        //             {...provided.droppableProps}
+        //             ref={provided.innerRef}
+        //             className='flex flex-row flex-wrap justify-between mt-[20px] mb-[20px]'
+        //         >
+        //             {thumbnails.map((item, index) => (
+        //                 <Draggable key={item.id} draggableId={item.id} index={index}>
+        //                     {(provided, snapshot) => {
+        //                         return (
+        //                             <div
+        //                                 className={`flex overflow-hidden mb-[20px] rounded-md`}
+        //                             >
+        //                                 {/* <div className='absolute top-0 left-0 bg-[#000000]/[0.1] w-full h-full'></div> */}
+        //                                 <div
+        //                                     className='relative min-w-[200px] max-h-[200px] rounded-md'
+        //                                     ref={provided.innerRef}
+        //                                     {...provided.draggableProps}
+        //                                     {...provided.dragHandleProps}
+        //                                     style={{
+        //                                         // userSelect: 'none',
+        //                                         margin: '0 8px 0 0',
+        //                                         backgroundColor: snapshot.isDragging ? 'blue' : 'transparent',
+        //                                         color: 'white',
+        //                                         ...provided.draggableProps.style,
+        //                                     }}
+        //                                 >
+        //                                     <Image
+        //                                         className="relative min-w-[200px] rounded-md"
+        //                                         src={item.url || '/images/no-image.jpg'}
+        //                                         alt={item?.id}
+        //                                         width={180}
+        //                                         height={37}
+        //                                         loading='lazy'
+        //                                     />
+        //                                     <div className='absolute bottom-[20px] text-[14px] w-[80%] left-[10%]'>{item.id}</div>
+        //                                 </div>
+        //                             </div>
+        //                         )
+        //                     }}
+        //                 </Draggable>
+        //             ))}
+        //             {provided.placeholder}
+        //         </div>
+        //         )}
+        //     </Droppable>
+        // </DragDropContext>
     )
 }
