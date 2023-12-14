@@ -8,7 +8,7 @@ const Nav = () => {
       <Link href='/' className='flex flex-row items-center'>
         <Image
             className="relative fill-air-blue"
-            src="images/air_blue.svg"
+            src="images/air-blue.svg"
             alt="Air Logo"
             width={75}
             height={15}
