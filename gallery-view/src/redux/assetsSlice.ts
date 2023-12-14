@@ -2,10 +2,15 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
+interface AssetObjectType {
+  image: string
+}
+
 export interface AssetType {
+  id: string,
   title: string,
   importedName: string,
-  assets: object[],
+  assets: AssetObjectType[],
   image: string,
   thumbnails: string[]
 }

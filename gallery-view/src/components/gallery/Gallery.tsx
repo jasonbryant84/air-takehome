@@ -5,9 +5,9 @@ import { useEffect } from 'react'
 import { Button } from '@/components'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { fetchBoards, BoardType } from '@/redux/boardsSlice'
-import { fetchAssets } from '@/redux/assetsSlice'
+import { fetchAssets, AssetType } from '@/redux/assetsSlice'
 import ImageGallery from './ImageGallery'
-import { useCreateThumbnails } from '@/utils/galleryHelpers'
+import { createAssetThumbnails, createBoardThumbnails } from '@/utils/galleryHelpers'
 
 interface GalleryType {
     type: string;
@@ -20,7 +20,9 @@ export default function Gallery(galleryInfo: GalleryType) {
 
     // Redux Implementation
     const dispatch = useAppDispatch()
-    const thumbnails = useCreateThumbnails(isBoards)
+    const boardItems = useAppSelector((state) => state.boards.items) as BoardType[]
+    const assetItems = useAppSelector((state) => state.assets.items) as AssetType[]
+    const thumbnails = isBoards ? createBoardThumbnails(boardItems) : createAssetThumbnails(assetItems) //useCreateThumbnails(isBoards)
 
     useEffect(() => {
         if (isBoards) {
