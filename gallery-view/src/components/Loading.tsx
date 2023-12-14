@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 export default function Loading() {
     return (
-        <div className='absolute flex justify-center items-center w-[100vw] h-[100vh] z-50 left-0 top-0 bg-air-blue'>
+        <div className='flex justify-center items-center w-[100%] h-[100%] bg-button-bkg'>
             <Image
-                className="relative dark:invert animate-bounce"
-                src="images/air.svg"
+                className="relative animate-bounce"
+                src="images/air-blue.svg"
                 alt="Air Logo"
-                width={180}
-                height={37}
+                width={40}
+                height={0}
                 priority
             />
         </div>

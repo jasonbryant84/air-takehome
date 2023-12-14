@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import { Loading } from '../'
+
 interface GalleryLazyImageProps {
   imageUrl: string;
   alt?: string;
@@ -37,7 +39,7 @@ export default function GalleryLazyImage({ imageUrl, alt }: GalleryLazyImageProp
       aria-label={alt}
       className="relative h-[60vw] w-[100vw] xs:h-[40vw] xs:w-[45vw] sm:h-[40vw] sm:w-[38vw] md:h-[25vw] md:w-[26vw] lg:h-[15vw] lg:w-[20vw] bg-cover bg-center mb-[20px] rounded-md overflow-hidden bg-button-bkg" // Placeholder styling
     >
-      {/* {!isLoaded && <div>Loading...</div>} */}
+      {!isLoaded && <Loading />}
     </div>
   )
 }

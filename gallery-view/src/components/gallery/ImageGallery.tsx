@@ -49,6 +49,7 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
                 const url = item.url || '/images/no-image.jpg'
                 return (
                     <GalleryLazyImage
+                        key={key}
                         imageUrl={url}
                     />
                     // <div
