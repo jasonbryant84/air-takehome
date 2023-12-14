@@ -40,6 +40,7 @@ export default function Gallery(galleryInfo: GalleryType) {
                 <Button
                     label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${thumbnails?.length ? `(${thumbnails?.length})` : ''}`}
                     className='w-[130px] h-[24px] absolute top-0 hover:bg-button-bkg rounded-md pr-[20px]'
+                    textClassName='font-semibold text-slate-500'
                 />
 
                 <ImageGallery

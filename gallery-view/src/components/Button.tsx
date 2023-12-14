@@ -1,21 +1,24 @@
 import Image from 'next/image'
 
 interface ButtonType {
-    label: string;
-    onClick?: (e: React.FormEvent) => void;
-    className?: string;
-    icon?: string
+    label?: string,
+    onClick?: (e: React.FormEvent) => void,
+    className?: string,
+    textClassName?: string,
+    icon?: string,
+    both?: boolean
 }
 
 export default function Button(buttonInfo: ButtonType) {
-    const { icon = '', label, onClick, className = '' } = buttonInfo
+    const { both = false, icon = '', label, onClick, className = '', textClassName = '' } = buttonInfo
 
+    console.log('label', label)
     return (
         <button
-            className={`transition duration-300 ease-out hover:ease-in hover:bg-button-bkg ${className}`}
+            className={`flex transition duration-300 ease-out hover:ease-in hover:bg-button-bkg ${className}`}
             onClick={onClick}
         >
-            {!icon && label}
+            <span className={`text-[12px] ${textClassName}`}>{label}</span>
             {icon.length > 0 && (
                 <>
                     <Image

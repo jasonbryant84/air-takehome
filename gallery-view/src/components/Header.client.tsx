@@ -25,7 +25,6 @@ export default function Header(headingInfo: HeaderType) {
                 />
 
                 <Button
-                    label='details'
                     className='flex justify-center items-center ml-[8px] h-[46px] w-[46px] rounded-md'
                     icon='filter'
                 />
@@ -33,14 +32,13 @@ export default function Header(headingInfo: HeaderType) {
 
             <div className='flex-row hidden min-w-[152px] sm:flex sm:ml-[20px]'>
                 <Button
-                    label='>'
                     className='flex justify-center items-center bg-button-bkg text-white w-[46px] h-[46px] rounded-md justify-center items-center'
                     icon='turn-arrow'
                 />
                 <Button
                     label='Save to...'
                     className='flex justify-center items-center bg-air-blue text-white w-[94px] h-[46px] rounded-md text-[14px] ml-[12px]'
-                    // was height 40px in example
+                    both
                 />
             </div>
         </header>

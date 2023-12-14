@@ -56,3 +56,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.gallery-controls {
+  @scroll 500px {
+    background-color: #f8f9fa;
+    transform: translateY(-50px);
+  }
+}

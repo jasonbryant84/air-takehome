@@ -51,7 +51,7 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
                 <div
                     {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className='flex flex-row flex-wrap justify-between mt-[30px] mb-[20px]'
+                    className='flex flex-row flex-wrap justify-between mt-[20px] mb-[20px]'
                 >
                     {thumbnails.map((item, index) => (
                         <Draggable key={item.id} draggableId={item.id} index={index}>

@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface InputType {
     label?: string,
     type: string,
@@ -9,7 +11,16 @@ interface InputType {
 
 export default function Input({ label, type, placeholder, value, className, onChange }: InputType) {
     return (
-      <div className="input-group grow max-w-[560px]">
+      <div className="relative grow max-w-[560px]">
+        <Image
+            className="absolute top-[13px] left-[13px]"
+            // src={`images/${icon}.svg`}
+            src={`images/search.svg`}
+            alt="search icon"
+            width={20}
+            height={20}
+            priority
+        />
         <label htmlFor={label}>{label}</label>
         <input
           type={type}
