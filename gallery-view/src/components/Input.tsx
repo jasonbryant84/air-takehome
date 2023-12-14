@@ -9,7 +9,7 @@ interface InputType {
 
 export default function Input({ label, type, placeholder, value, className, onChange }: InputType) {
     return (
-      <div className="input-group">
+      <div className="input-group grow max-w-[560px]">
         <label htmlFor={label}>{label}</label>
         <input
           type={type}

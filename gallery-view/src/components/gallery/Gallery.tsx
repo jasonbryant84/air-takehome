@@ -34,12 +34,12 @@ export default function Gallery(galleryInfo: GalleryType) {
 
     return (
         <section
-            className={`flex flex-row px-[70px] pt-[20px] w-full text-gray pb-[12px] ${className}`}
+            className={`flex flex-row px-[12px] sm:px-[70px] pt-[20px] w-full text-gray pb-[12px] ${className}`}
         >
             <div className='relative flex flex-col w-full pt-[20px]'>
                 <Button
                     label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${thumbnails?.length ? `(${thumbnails?.length})` : ''}`}
-                    className='w-[110px] h-[24px] absolute top-0'
+                    className='w-[130px] h-[24px] absolute top-0 hover:bg-button-bkg rounded-md pr-[20px]'
                 />
 
                 <ImageGallery

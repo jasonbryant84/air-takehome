@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         "air-blue": "var(--air-blue)",
-        "button-bkg": "var(--cta-hover-bkg)"
+        "button-bkg": "var(--button-bkg)"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
