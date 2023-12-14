@@ -14,7 +14,7 @@ export default function GalleryControls() {
                 icon='down-arrow'
             />
             <Button
-                className='mx-[4px] p-[6px] rounded-md'
+                className='mx-[4px] p-[6px] rounded-md hidden sm:flex'
                 icon='settings'
             />
             <Button

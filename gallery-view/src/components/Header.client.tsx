@@ -24,11 +24,13 @@ export default function Header(headingInfo: HeaderType) {
                         height={32}
                         priority
                     />
-                    <span className='text-[16px] text-gray-600'>Restaurant Stock</span>
+                    <span className='text-[15px] text-gray-600'>Restaurant Stock</span>
                 </div>
                 <div className='flex flex-row'>
                     <span className='hidden sm:inline-block text-[15px] text-gray-600'>User Name (usersemail@gmail.com)</span>
-                    <span className='inline-block sm:hidden text-[15px] text-gray-600'>UN</span>
+                    <span
+                        className='flex h-[24px] w-[24px] sm:hidden text-[15px] text-gray-900 justify-center items-center bg-[#c0a1ff] text-[9px] font-semibold rounded-xl'
+                    >UN</span>
                     <Image
                         className="relative ml-[20px]"
                         src={`images/air-blue.svg`}
@@ -64,8 +66,9 @@ export default function Header(headingInfo: HeaderType) {
                     />
                     <Button
                         label='Save to...'
-                        className='flex justify-center items-center bg-air-blue text-white w-[94px] h-[46px] rounded-md text-[14px] ml-[12px]'
-                        both
+                        className='flex justify-center items-center bg-air-blue text-white w-[94px] h-[46px] rounded-md text-[14px] ml-[12px] hover:bg-air-blue-hover'
+                        textClassName='text-[14px]'
+                        isBlue
                     />
                 </div>
             </header>

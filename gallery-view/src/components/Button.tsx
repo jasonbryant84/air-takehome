@@ -6,16 +6,15 @@ interface ButtonType {
     className?: string,
     textClassName?: string,
     icon?: string,
-    both?: boolean
+    isBlue?: boolean
 }
 
 export default function Button(buttonInfo: ButtonType) {
-    const { both = false, icon = '', label, onClick, className = '', textClassName = '' } = buttonInfo
+    const { isBlue = false, icon = '', label, onClick, className = '', textClassName = '' } = buttonInfo
 
-    console.log('label', label)
     return (
         <button
-            className={`flex transition duration-300 ease-out hover:ease-in hover:bg-button-bkg ${className}`}
+            className={`flex transition duration-300 ease-out hover:ease-in ${!isBlue ? 'hover:bg-button-bkg' : ''} ${className}`}
             onClick={onClick}
         >
             <span className={`text-[12px] ${textClassName}`}>{label}</span>

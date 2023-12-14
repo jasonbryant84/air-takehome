@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         "air-blue": "var(--air-blue)",
+        "air-blue-hover": "var(--air-blue-hover)",
         "button-bkg": "var(--button-bkg)"
       },
       backgroundImage: {

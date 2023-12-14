@@ -35,6 +35,7 @@ body {
   --background-start-rgb: 214, 219, 220;
   /* --background-end-rgb: 255, 255, 255; */
   --air-blue: rgb(0, 24, 204);
+  --air-blue-hover: rgb(2, 4, 164);
   --button-bkg: rgb(239, 239, 239);
 }
 
