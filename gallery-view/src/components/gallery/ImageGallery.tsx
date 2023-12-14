@@ -5,9 +5,14 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { BoardType } from '../../redux/boardsSlice'
 import { AssetType } from '../../redux/assetsSlice'
 
+interface ThumbnailType {
+    id: string,
+    url: string
+}
+
 interface ImageGalleryType {
     isBoards: boolean,
-    thumbnails: string[]
+    thumbnails: ThumbnailType[]
 }
 
 // Define the type for each image in the array

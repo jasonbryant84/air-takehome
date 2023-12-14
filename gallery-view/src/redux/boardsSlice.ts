@@ -3,6 +3,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
 export interface BoardType {
+  id: string,
   title: string,
   thumbnails: string[]
 }

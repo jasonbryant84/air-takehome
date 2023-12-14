@@ -1,10 +1,15 @@
 
 import { useAppSelector, useAppDispatch } from '@/redux/hooks'
-import { fetchBoards, BoardType } from '@/redux/boardsSlice'
+const usGetBoards = () => {
+    return useAppSelector((state) => state.boards.items)
+}
+const usGetAssets = () => {
+    return useAppSelector((state) => state.assets.items)
+}
 
 export const useCreateThumbnails = (isBoards: boolean) => {
     let thumbnails
-    const thumbnailObjs = useAppSelector((state) => isBoards ? state.boards.items : state.assets.items)
+    const thumbnailObjs = isBoards ? usGetBoards() : usGetAssets()
 
     if(isBoards) {
         thumbnails = thumbnailObjs?.map((obj) => {
