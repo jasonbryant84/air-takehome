@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { fetchBoards, BoardType } from '@/redux/boardsSlice'
 import { fetchAssets } from '@/redux/assetsSlice'
 import ImageGallery from './ImageGallery'
-import { createThumbnails } from '@/utils/galleryHelpers'
+import { useCreateThumbnails } from '@/utils/galleryHelpers'
 
 interface GalleryType {
     type: string;
@@ -20,7 +20,7 @@ export default function Gallery(galleryInfo: GalleryType) {
 
     // Redux Implementation
     const dispatch = useAppDispatch()
-    const thumbnails = createThumbnails(isBoards)
+    const thumbnails = useCreateThumbnails(isBoards)
 
     useEffect(() => {
         if (isBoards) {
