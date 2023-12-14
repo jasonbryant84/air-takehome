@@ -16,8 +16,6 @@ export default function GalleryLazyImage({ imageUrl, title, overlayText, alt }: 
   const [isLoaded, setIsLoaded] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
 
-  console.log('title', title)
-
   useEffect(() => {
     if (!elementRef.current) return;
 
