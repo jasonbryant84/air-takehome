@@ -64,8 +64,9 @@ export const assetsSlice = createSlice({
       })
       .addCase(fetchAssets.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        // state.items = action.payload.clips
-        state.items = [...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips]
+        state.items = action.payload.clips
+        console.log('action.payload.clips', action.payload.clips)
+        // state.items = [...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips, ...action.payload.clips]
         state.total = action.payload.total
       })
       .addCase(fetchAssets.rejected, (state, action) => {

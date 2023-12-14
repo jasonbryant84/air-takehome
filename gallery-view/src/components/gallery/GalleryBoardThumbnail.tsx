@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 interface ThumbnailType {
     title: string,
+    displayName: string,
     url: string,
     className?: string
 }

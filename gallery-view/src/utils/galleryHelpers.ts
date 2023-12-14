@@ -6,6 +6,7 @@ export const createAssetThumbnails = (items: any[]) => { // TODO: should be Asse
         const asset = assetObj.assets[0]
         return {
             id: assetObj.id,
+            displayName: assetObj.displayName,
             url: assetObj.assets.image
         }
     })
@@ -15,6 +16,7 @@ export const createBoardThumbnails = (items: BoardType[]) => {
     return items?.map((boardObj) => {
         return {
             id: boardObj.id,
+            title: boardObj.title,
             url: boardObj.thumbnails?.length ? boardObj.thumbnails[0] : null
         }
     })

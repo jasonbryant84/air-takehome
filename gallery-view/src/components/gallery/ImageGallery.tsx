@@ -6,6 +6,8 @@ import GalleryLazyImage from './GalleryLazyImage'
 
 interface ThumbnailType {
     id: string,
+    title?: string,
+    displayName?: string,
     url: string | null
 }
 
@@ -29,19 +31,20 @@ const initialImages: ImageItem[] = [
 
 export default function ImageGallery(galleryInfo: ImageGalleryType) {
     const { isBoards, thumbnails } = galleryInfo
+    console.log('thumbnails', thumbnails)
 
-    const [images, setImages] = useState(initialImages);
+    // const [images, setImages] = useState(initialImages);
 
-    // Function to handle the end of a drag event
-    const onDragEnd = (result: any) => {
-        if (!result.destination) return;
+    // // Function to handle the end of a drag event
+    // const onDragEnd = (result: any) => {
+    //     if (!result.destination) return;
 
-        const items = Array.from(images);
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
+    //     const items = Array.from(images);
+    //     const [reorderedItem] = items.splice(result.source.index, 1);
+    //     items.splice(result.destination.index, 0, reorderedItem);
 
-        setImages(items);
-    }
+    //     setImages(items);
+    // }
 
     return (
         <div className='flex flex-row flex-wrap justify-between mt-[20px]'>
@@ -51,6 +54,8 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
                     <GalleryLazyImage
                         key={key}
                         imageUrl={url}
+                        overlayText={item.displayName}
+                        title={item.title}
                     />
                     // <div
                     //     key={key}
