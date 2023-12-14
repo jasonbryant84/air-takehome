@@ -7,7 +7,7 @@ import { AssetType } from '../../redux/assetsSlice'
 
 interface ThumbnailType {
     id: string,
-    url: string
+    url: string | null
 }
 
 interface ImageGalleryType {

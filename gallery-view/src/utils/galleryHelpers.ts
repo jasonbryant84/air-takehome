@@ -1,12 +1,12 @@
 import { AssetType } from "@/redux/assetsSlice"
 import { BoardType } from "@/redux/boardsSlice"
 
-export const createAssetThumbnails = (items: AssetType[]) => {
+export const createAssetThumbnails = (items: any[]) => { // TODO: should be AssetType but type/build issues
     return items?.map((assetObj) => {
-        console.log('assetObj', assetObj.assets?.image)
+        const asset = assetObj.assets[0]
         return {
             id: assetObj.id,
-            url: assetObj.assets?.image
+            url: assetObj.assets.image
         }
     })
 }
