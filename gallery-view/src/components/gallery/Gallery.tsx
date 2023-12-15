@@ -1,7 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { fetchBoards, BoardType } from '@/redux/boardsSlice'
@@ -17,6 +16,7 @@ interface GalleryType {
 export default function Gallery(galleryInfo: GalleryType) {
     const { type, className = '' } = galleryInfo
     const isBoards = type.toLowerCase().includes('boards')
+    const [showImages, setShowImages] = useState<boolean>(true)
 
     // Redux Implementation
     const dispatch = useAppDispatch()
@@ -24,6 +24,9 @@ export default function Gallery(galleryInfo: GalleryType) {
     const assetItems = useAppSelector((state) => state.assets.items) as AssetType[]
     const thumbnails = isBoards ? createBoardThumbnails(boardItems) : createAssetThumbnails(assetItems) //useCreateThumbnails(isBoards)
 
+    const toggleView = () => {
+        setShowImages(!showImages)
+    }
     useEffect(() => {
         if (isBoards) {
             dispatch(fetchBoards())
@@ -42,12 +45,13 @@ export default function Gallery(galleryInfo: GalleryType) {
                     // className='flex w-[130px] h-[24px] top-0 hover:bg-button-bkg rounded-md pr-[20px]'
                     className='mr-[4px] text-[0.75em] p-[6px] w-[100px] w-initial rounded-md'
                     textClassName='font-semibold text-slate-500'
+                    onClick={toggleView}
                 />
 
-                <ImageGallery
+                {showImages && <ImageGallery
                     isBoards={isBoards}
                     thumbnails={thumbnails}
-                />
+                />}
             </div>
         </section>
     )
