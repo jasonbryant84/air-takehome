@@ -28,13 +28,13 @@ export default function GalleryDnD(galleryInfo: GalleryDnDType) {
     }
 
     const moveImage = useCallback((dragIndex: number, hoverIndex: number) => {
-        const newOrder = reorder(images, dragIndex, hoverIndex);
-        setImages(newOrder);
+        const newOrder = reorder(images, dragIndex, hoverIndex)
+        setImages(newOrder)
     }, [images])
 
     // Update images state when thumbnails prop changes
     useEffect(() => {
-        setImages(thumbnails);
+        setImages(thumbnails)
     }, [thumbnails])
 
     return (
@@ -43,7 +43,7 @@ export default function GalleryDnD(galleryInfo: GalleryDnDType) {
         >
             {images.map((thumbnail, index) => (
                 <GalleryDraggableImage
-                    key={index}
+                    key={thumbnail.id}
                     index={index}
                     moveImage={moveImage}
                     thumbnail={thumbnail}

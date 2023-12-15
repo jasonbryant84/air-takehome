@@ -15,7 +15,7 @@ export default function GalleryDraggableImage({ thumbnail, index, moveImage }: I
 
   const [, drop] = useDrop({
     accept: "image",
-    drop: (item: { index: number }) => {
+    hover: (item: { index: number }, monitor) => {
       if (item.index !== index) {
         moveImage(item.index, index)
         item.index = index
