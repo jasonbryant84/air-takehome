@@ -3,11 +3,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import boardsReducer from './boardsSlice'
 import assetsReducer from './assetsSlice'
+import searchReducer from './searchSlice'
 
 const store = configureStore({
   reducer: {
     boards: boardsReducer,
     assets: assetsReducer,
+    search: searchReducer
   },
 })
 

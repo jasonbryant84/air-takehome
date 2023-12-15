@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
 
 import GalleryLazyImage from './GalleryLazyImage';
+import { useAppSelector } from '@/redux/hooks'
 
 interface ThumbnailType {
     id: string,
@@ -39,7 +40,7 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
         if (!result.destination) {
             return;
         }
-        console.log('result', result)
+
         const items = reorder(
             thumbnails,
             result.source.index,
@@ -51,6 +52,7 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
     useEffect(() => {
         setImages(thumbnails)
     }, [thumbnails])
+    
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>

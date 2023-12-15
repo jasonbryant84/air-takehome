@@ -1,11 +1,13 @@
-// import { Box, Counter, List, StoreProvider } from '../components'
 import { Gallery, GalleryControls, GalleryHeader } from '@/components/gallery'
 import { Header, StoreProvider } from '@/components'
 
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <Header />
+      <StoreProvider>
+        <Header />
+      </StoreProvider>
+
       <GalleryHeader
         title='Air Branded Boards'
         subTitle='With a bunch of stock photos!'
@@ -21,18 +23,6 @@ export default function Home() {
           type='assets'
         />
       </StoreProvider>
-      {/* <StoreProvider>
-        <Counter />
-        <List />
-      </StoreProvider>
-
-      <Box
-        left='left'
-        top='top'
-        bottom='bottom'
-      />
-
-      <Form /> */}
     </main>
   )
 }

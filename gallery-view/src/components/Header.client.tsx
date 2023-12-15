@@ -4,6 +4,9 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Button, Input } from '@/components'
 
+import { updateSearch } from '@/redux/searchSlice'
+import { useAppSelector, useAppDispatch } from '@/redux/hooks'
+
 interface HeaderType {
     className?: string;
 }
@@ -11,6 +14,9 @@ interface HeaderType {
 export default function Header(headingInfo: HeaderType) {
     const { className = '' } = headingInfo
     const [searchValue, setSearchValue] = useState<string>('')
+
+    const dispatch = useAppDispatch()
+    const searchTerm = useAppSelector((state) => state.search.value)
 
     return (
         <div className='fixed flex flex-col z-10 w-full'>
@@ -49,8 +55,9 @@ export default function Header(headingInfo: HeaderType) {
                         type='search'
                         placeholder='Search board'
                         className='border-[1px] w-full h-[46px] pl-[40px] pr-[8px] rounded-md'
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        value={searchTerm}
+                        // onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={(e) => dispatch(updateSearch(e.target.value))}
                     />
 
                     <Button

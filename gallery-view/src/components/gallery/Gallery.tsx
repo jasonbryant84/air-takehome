@@ -22,7 +22,10 @@ export default function Gallery(galleryInfo: GalleryType) {
     const dispatch = useAppDispatch()
     const boardItems = useAppSelector((state) => state.boards.items) as BoardType[]
     const assetItems = useAppSelector((state) => state.assets.items) as AssetType[]
+    const searchTerm = useAppSelector((state) => state.search.value)
     const thumbnails = isBoards ? createBoardThumbnails(boardItems) : createAssetThumbnails(assetItems) //useCreateThumbnails(isBoards)
+
+    const [filteredThumbnails, setFilteredThumbnails] = useState<any[]|null>(null)
 
     const toggleView = () => {
         setShowImages(!showImages)
@@ -36,24 +39,39 @@ export default function Gallery(galleryInfo: GalleryType) {
         }
     }, [])
 
-    return (
-        <section
-            className={`flex flex-row px-[12px] sm:px-[70px] pt-[20px] w-full text-gray pb-[12px] ${className}`}
-        >
-            <div className='relative flex flex-col w-full pt-[20px]'>
-                <Button
-                    label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${thumbnails?.length ? `(${thumbnails?.length})` : ''}`}
-                    // className='flex w-[130px] h-[24px] top-0 hover:bg-button-bkg rounded-md pr-[20px]'
-                    className='mr-[4px] text-[0.75em] p-[6px] w-[100px] w-initial rounded-md'
-                    textClassName='font-semibold text-slate-500'
-                    onClick={toggleView}
-                />
+    useEffect(() => {
+        if (searchTerm.length > 0) {
+            const tempThumbnails = thumbnails.filter((e: any) => {
+                return e.displayName?.toLowerCase().includes(searchTerm.toLowerCase())
+            })
+            setFilteredThumbnails(tempThumbnails)
+        } else {
+            setFilteredThumbnails(null)
+        }
+    }, [searchTerm])
 
-                {showImages && <ImageGallery
-                    isBoards={isBoards}
-                    thumbnails={thumbnails}
-                />}
-            </div>
-        </section>
+    return (
+        <>
+            { ((isBoards && !filteredThumbnails) || !isBoards) &&
+                <section
+                    className={`flex flex-row px-[12px] sm:px-[70px] pt-[20px] w-full text-gray pb-[12px] ${className}`}
+                >
+                    <div className='relative flex flex-col w-full pt-[20px]'>
+                        <Button
+                            label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${thumbnails?.length ? `(${thumbnails?.length})` : ''}`}
+                            // className='flex w-[130px] h-[24px] top-0 hover:bg-button-bkg rounded-md pr-[20px]'
+                            className='mr-[4px] text-[0.75em] p-[6px] w-[100px] w-initial rounded-md'
+                            textClassName='font-semibold text-slate-500'
+                            onClick={toggleView}
+                        />
+
+                        {showImages && <ImageGallery
+                            isBoards={isBoards}
+                            thumbnails={filteredThumbnails || thumbnails}
+                        />}
+                    </div>
+                </section>
+            }
+        </>
     )
 }
