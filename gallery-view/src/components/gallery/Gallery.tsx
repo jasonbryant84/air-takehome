@@ -27,6 +27,7 @@ export default function Gallery(galleryInfo: GalleryType) {
     const toggleView = () => {
         setShowImages(!showImages)
     }
+
     useEffect(() => {
         if (isBoards) {
             dispatch(fetchBoards())
