@@ -52,7 +52,7 @@ export default function Gallery(galleryInfo: GalleryType) {
 
     return (
         <>
-            { ((isBoards && !filteredThumbnails) || !isBoards) &&
+            { ((isBoards && filteredThumbnails?.length !== 0) || !isBoards) &&
                 <section
                     className={`flex flex-row px-[12px] sm:px-[70px] pt-[20px] w-full text-gray pb-[12px] ${className}`}
                 >
