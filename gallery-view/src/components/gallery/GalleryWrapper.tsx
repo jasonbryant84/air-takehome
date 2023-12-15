@@ -5,7 +5,6 @@ import { Button } from '@/components'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { fetchBoards, BoardType } from '@/redux/boardsSlice'
 import { fetchAssets, AssetType } from '@/redux/assetsSlice'
-import ImageGallery from './ImageGallery'
 import GalleryDnD from './GalleryDnD'
 import { createAssetThumbnails, createBoardThumbnails } from '@/utils/galleryHelpers'
 
@@ -27,7 +26,7 @@ export default function Gallery(galleryInfo: GalleryType) {
     const boardItems = useAppSelector((state) => state.boards.items) as BoardType[]
     const assetItems = useAppSelector((state) => state.assets.items) as AssetType[]
     const searchTerm = useAppSelector((state) => state.search.value)
-    const thumbnails = isBoards ? createBoardThumbnails(boardItems) : createAssetThumbnails(assetItems) //useCreateThumbnails(isBoards)
+    const thumbnails = isBoards ? createBoardThumbnails(boardItems) : createAssetThumbnails(assetItems)
 
     const [filteredThumbnails, setFilteredThumbnails] = useState<any[]|null>(null)
 
