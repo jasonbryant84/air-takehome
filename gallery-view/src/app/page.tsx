@@ -15,13 +15,8 @@ export default function Home() {
       <GalleryControls />
       
       <StoreProvider>
-        <GalleryWrapper
-          type='boards'
-        />
-
-        <GalleryWrapper
-          type='assets'
-        />
+        <GalleryWrapper type='boards'/>
+        <GalleryWrapper type='assets' />
       </StoreProvider>
     </main>
   )

@@ -10,6 +10,7 @@ import { createAssetThumbnails, createBoardThumbnails } from '@/utils/galleryHel
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { TouchBackend } from 'react-dnd-touch-backend'
 
 interface GalleryType {
     type: string;
@@ -17,6 +18,7 @@ interface GalleryType {
 }
 
 export default function Gallery(galleryInfo: GalleryType) {
+    const [isMobile, setIsMobile] = useState(false)
     const { type, className = '' } = galleryInfo
     const isBoards = type.toLowerCase().includes('boards')
     const [showImages, setShowImages] = useState<boolean>(true)
@@ -40,6 +42,10 @@ export default function Gallery(galleryInfo: GalleryType) {
         } else {
             dispatch(fetchAssets())
         }
+    }, [])
+
+    useEffect(() => {
+        setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     }, [])
 
     useEffect(() => {
@@ -68,7 +74,7 @@ export default function Gallery(galleryInfo: GalleryType) {
                         />
 
                         {showImages &&
-                            <DndProvider backend={HTML5Backend}>
+                            <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
                                 <GalleryDnD
                                     thumbnails={filteredThumbnails || thumbnails}
                                 />

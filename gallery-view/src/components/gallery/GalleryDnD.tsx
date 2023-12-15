@@ -43,7 +43,7 @@ export default function GalleryDnD(galleryInfo: GalleryDnDType) {
         >
             {images.map((thumbnail, index) => (
                 <GalleryDraggableImage
-                    key={thumbnail.id}
+                    key={thumbnail?.id || index}
                     index={index}
                     moveImage={moveImage}
                     thumbnail={thumbnail}
