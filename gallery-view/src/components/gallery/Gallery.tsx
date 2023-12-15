@@ -58,7 +58,7 @@ export default function Gallery(galleryInfo: GalleryType) {
                 >
                     <div className='relative flex flex-col w-full pt-[20px]'>
                         <Button
-                            label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${thumbnails?.length ? `(${thumbnails?.length})` : ''}`}
+                            label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${filteredThumbnails?.length || thumbnails?.length ? `(${filteredThumbnails?.length || thumbnails?.length})` : ''}`}
                             // className='flex w-[130px] h-[24px] top-0 hover:bg-button-bkg rounded-md pr-[20px]'
                             className='mr-[4px] text-[0.75em] p-[6px] w-[100px] w-initial rounded-md'
                             textClassName='font-semibold text-slate-500'
