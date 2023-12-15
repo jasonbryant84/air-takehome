@@ -42,7 +42,7 @@ export default function GalleryLazyImage({ imageUrl, title, overlayText, alt }: 
       ref={elementRef}
       style={backgroundStyle}
       aria-label={alt}
-      className="relative group h-[60vw] w-[100vw] xs:h-[40vw] xs:w-[45vw] sm:h-[40vw] sm:w-[38vw] md:h-[25vw] md:w-[26vw] lg:h-[15vw] lg:w-[20vw] bg-cover bg-center mb-[20px] rounded-md overflow-hidden bg-button-bkg" // Placeholder styling
+      className="relative group w-full h-[60vw] xs:h-[40vw] sm:h-[40vw] md:h-[25vw] lg:h-[15vw] bg-cover bg-center mb-[20px] rounded-md overflow-hidden bg-button-bkg" // Placeholder styling
     >
       {isLoaded && (
         <>
