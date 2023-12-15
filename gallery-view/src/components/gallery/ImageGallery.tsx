@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
 
 import GalleryLazyImage from './GalleryLazyImage';
@@ -16,7 +16,11 @@ interface ImageGalleryType {
 }
 
 export default function ImageGallery(galleryInfo: ImageGalleryType) {
-    const { isBoards, thumbnails } = galleryInfo;
+    const { isBoards, thumbnails } = galleryInfo
+    const [images, setImages] = useState<ThumbnailType[]>(thumbnails)
+
+    let droppableId = 'droppable-'
+    droppableId += isBoards ? 'boards' : 'assets'
 
     // Function to reorder the array when an item is dragged
     const reorder = (
@@ -40,19 +44,23 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
             result.source.index,
             result.destination.index
         );
-        // Update the thumbnails state here if necessary
-    };
+        setImages(items)
+    }
+
+    useEffect(() => {
+        setImages(thumbnails)
+    }, [thumbnails])
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppable">
+            <Droppable droppableId={droppableId}>
                 {(provided) => (
                     <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                         className='flex flex-row flex-wrap justify-between mt-[20px]'
                     >
-                        {thumbnails.map((item, index) => (
+                        {images.map((item, index) => (
                             <Draggable key={item.id} draggableId={item.id} index={index}>
                                 {(provided) => (
                                     <div
