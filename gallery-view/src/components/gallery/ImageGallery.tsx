@@ -39,6 +39,7 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
         if (!result.destination) {
             return;
         }
+        console.log('result', result)
         const items = reorder(
             thumbnails,
             result.source.index,
