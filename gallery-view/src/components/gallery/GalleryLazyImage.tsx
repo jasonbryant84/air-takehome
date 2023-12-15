@@ -21,18 +21,18 @@ export default function GalleryLazyImage({ imageUrl, title, overlayText, alt }: 
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const [entry] = entries;
+        const [entry] = entries
         if (entry.isIntersecting) {
-          setIsLoaded(true);
-          observer.disconnect();
+          setIsLoaded(true)
+          observer.disconnect()
         }
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(elementRef.current);
+    observer.observe(elementRef.current)
 
-    return () => observer.disconnect();
+    return () => observer.disconnect()
   }, []);
 
   const backgroundStyle = isLoaded ? { backgroundImage: `url(${imageUrl})` } : {};

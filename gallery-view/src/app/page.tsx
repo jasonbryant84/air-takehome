@@ -1,4 +1,4 @@
-import { Gallery, GalleryControls, GalleryHeader } from '@/components/gallery'
+import { GalleryWrapper, GalleryControls, GalleryHeader } from '@/components/gallery'
 import { Header, StoreProvider } from '@/components'
 
 export default function Home() {
@@ -15,11 +15,11 @@ export default function Home() {
       <GalleryControls />
       
       <StoreProvider>
-        <Gallery
+        <GalleryWrapper
           type='boards'
         />
 
-        <Gallery
+        <GalleryWrapper
           type='assets'
         />
       </StoreProvider>

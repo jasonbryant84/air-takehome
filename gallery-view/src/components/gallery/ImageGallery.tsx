@@ -61,7 +61,6 @@ export default function ImageGallery(galleryInfo: ImageGalleryType) {
                     <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        // className='flex flex-row flex-wrap justify-between mt-[20px]'
                         className='grid grid-cols-1 xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-4 lg:gap-4 mt-[20px]'
                     >
                         {images.map((item, index) => (

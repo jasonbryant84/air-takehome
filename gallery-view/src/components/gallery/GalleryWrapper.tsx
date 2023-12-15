@@ -6,7 +6,11 @@ import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { fetchBoards, BoardType } from '@/redux/boardsSlice'
 import { fetchAssets, AssetType } from '@/redux/assetsSlice'
 import ImageGallery from './ImageGallery'
+import GalleryDnD from './GalleryDnD'
 import { createAssetThumbnails, createBoardThumbnails } from '@/utils/galleryHelpers'
+
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 interface GalleryType {
     type: string;
@@ -59,16 +63,18 @@ export default function Gallery(galleryInfo: GalleryType) {
                     <div className='relative flex flex-col w-full pt-[20px]'>
                         <Button
                             label={`${isBoards ? 'BOARDS' : 'ASSETS'} ${filteredThumbnails?.length || thumbnails?.length ? `(${filteredThumbnails?.length || thumbnails?.length})` : ''}`}
-                            // className='flex w-[130px] h-[24px] top-0 hover:bg-button-bkg rounded-md pr-[20px]'
                             className='mr-[4px] text-[0.75em] p-[6px] w-[100px] w-initial rounded-md'
                             textClassName='font-semibold text-slate-500'
                             onClick={toggleView}
                         />
 
-                        {showImages && <ImageGallery
-                            isBoards={isBoards}
-                            thumbnails={filteredThumbnails || thumbnails}
-                        />}
+                        {showImages &&
+                            <DndProvider backend={HTML5Backend}>
+                                <GalleryDnD
+                                    thumbnails={filteredThumbnails || thumbnails}
+                                />
+                            </DndProvider>
+                        }
                     </div>
                 </section>
             }
